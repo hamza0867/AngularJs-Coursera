@@ -36,7 +36,7 @@
               <button ng-click="toBuy.buy($index)">Bought</button>
             </li>
           </ul>
-          <div class="emptyMessage" ng-show="toBuy.empty()">
+          <div class="emptyMessage" ng-if="toBuy.empty()">
             Everything is bought!
           </div>
         </div>
@@ -52,7 +52,7 @@
               Bought {{ item.quantity }} {{ item.name }}
             </li>
           </ul>
-          <div class="emptyMessage" ng-show="alreadyBought.empty()">
+          <div class="emptyMessage" ng-if="alreadyBought.empty()">
             Nothing bought yet.
           </div>
         </div>
