@@ -53,6 +53,6 @@
 
   function FoundItemsController() {
     const fic = this;
-    fic.menuEmpty = () => fic.menuItems.length === 0;
+    fic.menuEmpty = () => fic.menuItems && fic.menuItems.length === 0;
   }
 })();
