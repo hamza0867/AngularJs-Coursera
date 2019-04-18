@@ -14,10 +14,17 @@
   function NarrowItDownController(MenuSearchService) {
     const ndc = this;
     ndc.searchTerm = '';
-    ndc.search = () =>
-      MenuSearchService.getMatchedMenuItems(ndc.searchTerm).then(
-        res => (ndc.found = res)
-      );
+    ndc.search = () => {
+      ndc.searchTerm.replace(/\s+/g, ' ');
+      if (ndc.searchTerm !== ' ' && ndc.searchTerm !== '') {
+        MenuSearchService.getMatchedMenuItems(ndc.searchTerm).then(
+          res => (ndc.found = res)
+        );
+      } else {
+        ndc.found = [];
+      }
+      console.log(ndc.found);
+    };
     ndc.onRemove = index => {
       ndc.found.splice(index, 1);
     };
