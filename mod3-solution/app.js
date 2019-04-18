@@ -46,7 +46,7 @@
       controller: FoundItemsController,
       bindToController: true,
       controllerAs: 'fic',
-      templateUrl: '../html/found-items.html'
+      templateUrl: 'found-items.html'
     };
     return ddo;
   }
