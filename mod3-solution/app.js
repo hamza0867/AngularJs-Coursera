@@ -23,7 +23,6 @@
       } else {
         ndc.found = [];
       }
-      console.log(ndc.found);
     };
     ndc.onRemove = index => {
       ndc.found.splice(index, 1);
