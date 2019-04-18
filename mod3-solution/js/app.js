@@ -7,17 +7,20 @@
     .constant(
       'API_ENDPOINT',
       'https://davids-restaurant.herokuapp.com/menu_items.json'
-    );
+    )
+    .directive('foundItems', FoundItems);
 
   NarrowItDownController.$inject = ['MenuSearchService'];
   function NarrowItDownController(MenuSearchService) {
     const ndc = this;
     ndc.searchTerm = '';
-    ndc.found = [];
     ndc.search = () =>
-      MenuSearchService.getMatchedMenuItems(ndc.searchTerm).then(res =>
-        console.log(res)
+      MenuSearchService.getMatchedMenuItems(ndc.searchTerm).then(
+        res => (ndc.found = res)
       );
+    ndc.onRemove = index => {
+      ndc.found.splice(index, 1);
+    };
   }
 
   MenuSearchService.$inject = ['$http', 'API_ENDPOINT'];
@@ -32,5 +35,24 @@
       });
       return response;
     };
+  }
+
+  function FoundItems() {
+    const ddo = {
+      scope: {
+        menuItems: '<',
+        onRemove: '&'
+      },
+      controller: FoundItemsController,
+      bindToController: true,
+      controllerAs: 'fic',
+      templateUrl: '../html/found-items.html'
+    };
+    return ddo;
+  }
+
+  function FoundItemsController() {
+    const fic = this;
+    fic.menuEmpty = () => fic.menuItems.length === 0;
   }
 })();
