@@ -1,0 +1,19 @@
+<div class="row">
+  <a ui-sref="home" class="btn btn-primary ml-2">Go Back</a>
+</div>
+<div class="row">
+  <div ng-repeat="item in $ctrl.items" class="col-md-4 px-0 d-flex">
+    <div class="card m-2 align-self-stretch flex-fill">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-3">{{ item.name }}</h5>
+        <h6 class="card-subtitle text-muted mb-2">{{ item.short_name }}</h6>
+        <p class="card-text">{{ item.special_instructions }}</p>
+      </div>
+      <div class="card-footer text-center text-white">
+        <a ui-sref="items({category: item.short_name})" class="btn btn-primary"
+          >Show Items of this category</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
