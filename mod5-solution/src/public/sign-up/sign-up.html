@@ -1,0 +1,135 @@
+<h1 class="text-center" style="margin-bottom: 3rem;">Sign Up</h1>
+<form name="signUpForm" novalidate>
+  <div
+    class="input-group col-md-offset-3 col-md-6"
+    style="margin-bottom: 2rem;"
+  >
+    <span class="input-group-addon" style="width: 25%">First Name</span>
+    <input
+      type="text"
+      class="form-control"
+      name="fName"
+      required
+      ng-model="signUpCtrl.fName"
+    />
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.fName.$error.required && signUpForm.fName.$touched "
+    >
+      First Name is required
+    </span>
+  </div>
+  <div
+    class="input-group col-md-offset-3 col-md-6"
+    style="margin-bottom: 2rem;"
+  >
+    <span class="input-group-addon" style="width: 25%">Last Name</span>
+    <input
+      required
+      type="text"
+      class="form-control"
+      name="lName"
+      ng-model="signUpCtrl.lName"
+    />
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.lName.$error.required && signUpForm.lName.$touched "
+    >
+      Last Name is required
+    </span>
+  </div>
+  <div
+    class="input-group col-md-offset-3 col-md-6"
+    style="margin-bottom: 2rem;"
+  >
+    <span class="input-group-addon" style="width: 25%">Email</span>
+    <input
+      required
+      type="email"
+      class="form-control"
+      name="email"
+      ng-model="signUpCtrl.email"
+    />
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.email.$error.required && signUpForm.email.$touched "
+    >
+      Email is required
+    </span>
+  </div>
+  <div
+    class="input-group col-md-offset-3 col-md-6"
+    style="margin-bottom: 2rem;"
+  >
+    <span class="input-group-addon" style="width: 25%">Phone</span>
+    <input
+      required
+      type="text"
+      class="form-control"
+      name="phone"
+      minlength="10"
+      ng-model="signUpCtrl.phone"
+    />
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.phone.$error.required && signUpForm.phone.$touched "
+    >
+      Phone is required
+    </span>
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.phone.$error.minlength && signUpForm.phone.$touched "
+    >
+      Phone must be more than 10 digits
+    </span>
+  </div>
+  <div
+    class="input-group col-md-offset-3 col-md-6"
+    style="margin-bottom: 2rem;"
+  >
+    <span class="input-group-addon" style="width: 25%">Menu Number</span>
+    <input
+      required
+      minlength="2"
+      type="text"
+      class="form-control"
+      name="menuNumber"
+      ng-model="signUpCtrl.menuNumber"
+    />
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.menuNumber.$error.required && signUpForm.menuNumber.$touched "
+    >
+      Menu Number is required
+    </span>
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="signUpForm.menuNumber.$error.minLength && signUpForm.menuNumber.$touched "
+    >
+      Must be at least 2 chars long
+    </span>
+    <span
+      class="input-group-addon form-error-msg"
+      ng-if="! signUpCtrl.menuExists"
+    >
+      This item doesn't exist
+    </span>
+  </div>
+
+  <div class="col-md-offset-8" style="margin-bottom: 2rem;">
+    <button
+      class="btn btn-warning"
+      ng-click="signUpCtrl.submit()"
+      ng-disabled="signUpForm.$invalid"
+    >
+      Submit
+    </button>
+  </div>
+  <div
+    class="col-md-offset-8"
+    style="margin-bottom: 2rem; color: green; font-weight: 700;"
+    ng-if="signUpCtrl.formValid"
+  >
+    Information has been saved
+  </div>
+</form>
