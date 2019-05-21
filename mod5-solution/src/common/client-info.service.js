@@ -9,5 +9,8 @@
     service.saveInfo = function(user) {
       service.user = user;
     };
+    service.getUser = function() {
+      return service.user;
+    };
   }
 })();
